@@ -4,9 +4,42 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thank you for your order!</h1>
+    <h2>You have authorized a payment to Jungle.</h2>
     <p>
-      This is your receipt for your order. Please keep for your own records.<br>
+      To see the full transaction details, please log into your Jungle account.
+      <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @order.line_items.each do |line_item| %> 
+            <tr>
+              <td>
+                <%= line_item.product.name %>
+                <img class="product-review" src=<%= line_item.product.image %>>
+              </td>
+              <td><%= line_item.product.description %></td>
+              <td><%= line_item.quantity %></td>
+            </tr>
+            <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="2">
+            TOTAL:
+          </th>
+          <th>
+          <%= number_to_currency(@order.total_cents) %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+      <br>
+      Please do not reply to this email. We are unable to respond to inquiries sent to this address.
     </p>
   </body>
 </html>
