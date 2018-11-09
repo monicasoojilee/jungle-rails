@@ -39,6 +39,6 @@ module Jungle
     config.active_record.raise_in_transactional_callbacks = true
 
 
-config.action_mailer.asset_host = 'http://0.0.0.0:3000'
+    config.action_mailer.asset_host = 'http://0.0.0.0:3000'
   end
 end

@@ -21,6 +21,33 @@ end
 
 # Let's do this ...
 
+## USERS
+
+puts "Re-creating Users..."
+
+User.destroy_all
+
+spooky = User.create!({
+  first_name:  'Spooky',
+  last_name: 'Skeleton',
+  email: '111@email.ca',
+  password_digest: BCrypt::Password.create('111')
+})
+
+spoopy = User.create!({
+  first_name:  'Spoopy',
+  last_name: 'Ghost',
+  email: '000@email.ca',
+  password_digest: BCrypt::Password.create('000')
+})
+
+diablo = User.create!({
+  first_name:  'Diablo',
+  last_name: 'Demon',
+  email: '666@email.ca',
+  password_digest: BCrypt::Password.create('666')
+})
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -35,7 +62,7 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
+men_classy_shirt = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -43,7 +70,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+women_zebra_pants = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -51,7 +78,7 @@ cat1.products.create!({
   price: 124.99
 })
 
-cat1.products.create!({
+hipster_hat = cat1.products.create!({
   name:  'Hipster Hat',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel3.jpg'),
@@ -59,7 +86,7 @@ cat1.products.create!({
   price: 34.49
 })
 
-cat1.products.create!({
+hipster_socks = cat1.products.create!({
   name:  'Hipster Socks',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel4.jpg'),
@@ -67,7 +94,7 @@ cat1.products.create!({
   price: 25.00
 })
 
-cat1.products.create!({
+russian_spy_shoes = cat1.products.create!({
   name:  'Russian Spy Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel5.jpg'),
@@ -75,7 +102,7 @@ cat1.products.create!({
   price: 1_225.00
 })
 
-cat1.products.create!({
+human_feet_shoes = cat1.products.create!({
   name:  'Human Feet Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel6.jpg'),
@@ -84,7 +111,7 @@ cat1.products.create!({
 })
 
 
-cat2.products.create!({
+modern_skateboard = cat2.products.create!({
   name:  'Modern Skateboards',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics1.jpg'),
@@ -92,7 +119,7 @@ cat2.products.create!({
   price: 164.49
 })
 
-cat2.products.create!({
+hotdog_slicer = cat2.products.create!({
   name:  'Hotdog Slicer',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics2.jpg'),
@@ -100,7 +127,7 @@ cat2.products.create!({
   price: 26.00
 })
 
-cat2.products.create!({
+worlds_largest_smartwatch = cat2.products.create!({
   name:  'World\'s Largest Smartwatch',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics3.jpg'),
@@ -108,7 +135,7 @@ cat2.products.create!({
   price: 2_026.29
 })
 
-cat3.products.create!({
+optimal_sleeping_bed = cat3.products.create!({
   name:  'Optimal Sleeping Bed',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture1.jpg'),
@@ -116,7 +143,7 @@ cat3.products.create!({
   price: 3_052.00
 })
 
-cat3.products.create!({
+electric_chair = cat3.products.create!({
   name:  'Electric Chair',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture2.jpg'),
@@ -124,7 +151,7 @@ cat3.products.create!({
   price: 987.65
 })
 
-cat3.products.create!({
+red_bookshelf = cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
@@ -132,5 +159,31 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## REVIEWS
+
+puts "Re-creating Reviews..."
+
+Review.destroy_all 
+
+review_osb = Review.create!({
+  product_id: optimal_sleeping_bed.id,
+  user_id: spooky.id,
+  description: 'Perfect fit, very happy with pruchase adn highly reccomend to other rickety boned people',
+  rating: 5
+})
+
+review_ms = Review.create!({
+  product_id: modern_skateboard.id,
+  user_id: spoopy.id,
+  description: 'Able to get around very fast to be extra spoopy this coming spoopy season!',
+  rating: 5
+})
+
+review_mcs = Review.create!({
+  product_id: men_classy_shirt.id,
+  user_id: diablo.id,
+  description: 'Quality okay...not the best fit around torso. Need to find another shirt for upcoming job interview though...',
+  rating: 2
+})
 
 puts "DONE!"
