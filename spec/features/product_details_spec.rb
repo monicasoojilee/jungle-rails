@@ -26,6 +26,4 @@ RSpec.feature "ProductDetails", type: :feature do
     expect(page).to have_content("#{@category.products.first.name}", count: 2)
   end
 
-
-
 end
